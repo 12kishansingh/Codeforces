@@ -48,3 +48,35 @@ int main() {
 /*
 
 */
+//another simpler approach of binary expo
+/*
+int pow(int a,int b,int m){
+    if(b==0){
+        return a%m;
+    }
+    if(b%2==0){
+        int t=pow(a,b/2,m);
+        return (1ll*t*t%m);
+    }
+    else{
+        int t=pow(a,(b-1)/2,m);
+        t=(1ll*t*t)%m;
+        return (1ll*a*t%m);
+    }
+}
+
+*/
+// modulo for division -- multiplicative inverse
+
+// b^-1(b inverse)==b^(m-2)%m
+/*
+int a,b;cin>>a>>b;
+int res1=(a/b)%m;
+a=a%m;
+int inv_b=pow(int b,m-2,m);
+int res2=a*inv_b%m;
+
+
+
+
+*/
