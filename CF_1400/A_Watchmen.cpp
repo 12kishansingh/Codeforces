@@ -21,17 +21,24 @@ return ostream;
 
 void solve(){
 int n;cin>>n;
-vector<int>a(n);
-cin>>a;
-
+map<int,int>x,y;
+map<pair<int,int>,int>m;
+ll cnt=0;
+while(n--){
+    int a,b;cin>>a>>b;
+    cnt+=(x[a]++);
+    cnt+=(y[b]++);
+    cnt-=(m[{a,b}]++);
+}
+cout<<cnt<<endl;
 }
 int main(){
 ios_base::sync_with_stdio(false);
 cin.tie(0);
 cout.tie(0);
 int t;
-cin>>t;
-
+//cin>>t;
+t=1;
 while(t--){
 solve();
 }
