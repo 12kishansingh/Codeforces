@@ -20,38 +20,24 @@ return ostream;
 
 
 void solve(){
-int n,l,r,x;cin>>n>>l>>r>>x;
-vector<ll>a(n);
+ll n,x,y;cin>>n>>x>>y;
+vector<int>a(n);
 cin>>a;
-int cnt=0;
-
-for(int i=0;i<(1<<n);i++){
-    vector<ll>v;
-    for(int j=0;j<n;j++){// calculating subsets subsets
-        if(((i>>j) & 1))v.push_back(a[j]);
-    }
-    if(v.size()<=1)continue;
-    // for(auto &it:v){
-    //     cout<<it<<" ";
-    // }cout<<endl;
-    ll sum=accumulate(all(v),0LL);
-    int diff=abs(*max_element(all(v))-*min_element(all(v)));
-   
-    if(sum>=l && sum<=r && diff>=x && v.size()>=2){
-        cnt++;
-    }
-    
+ll sum=accumulate(all(a),0LL);
+if((x+y+sum)%2==0 ){
+    cout<<"Alice"<<endl;
 }
-cout<<cnt<<endl;
-
+else{
+    cout<<"Bob"<<endl;
+}
 }
 int main(){
 ios_base::sync_with_stdio(false);
 cin.tie(0);
 cout.tie(0);
 int t;
-//cin>>t;
-t=1;
+cin>>t;
+
 while(t--){
 solve();
 }
