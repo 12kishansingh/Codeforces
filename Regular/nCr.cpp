@@ -45,6 +45,7 @@ void solve(){
 precomp();
 ll n,r;cin>>n>>r;
 //cout<<ncr(n,r)<<endl;// for each i query use this method of precomputation
+
 // if we've to calculate only once then use the following
 ll ans=1;
 for(int i=1;i<=min(r,n-r);i++){

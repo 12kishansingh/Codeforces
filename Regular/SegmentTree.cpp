@@ -26,7 +26,7 @@ if(start==end){
     segtree[idx]=a[start];
     return;
 }
-int mid=(start+mid)/2;
+int mid=(start+end)/2;
 int left=2*idx,right=2*idx+1;
 build(a,start,mid,left);// left index
 build(a,mid+1,end,right);// right index
@@ -41,7 +41,7 @@ if(start==end){
     return;
 }
 int mid=(start+end)/2;
-if(mid<=pos){
+if(mid>=pos){
 update(a,start,mid,2*idx,pos,val);
 }
 else{
@@ -52,26 +52,33 @@ segtree[idx]=segtree[2*idx]+segtree[2*idx+1];
 
 int query(int start,int end,int idx, int l,int r){//give sum from l to r
 // complete overlap
-if(l>=start && end<=r){
+if(start>=l && end<=r){
     return segtree[idx];
 }
 // disjoint
 if(l>end|| r<start){
-    return;
+    return 0;
 }
 int mid=(start+end)/2;
 int leftans=query(start,mid,2*idx,l,r);
 int rightans=query(mid+1,end,2*idx+1,l,r);
 return leftans+rightans;
+
 }
 
 void solve(){
 int n;cin>>n;
-segtree.resize(2*n+1);
+segtree.resize(4*n,0);
 vector<int>a(n);
-cin>>a;
+cin>>a;  
 
 build(a,0,n-1,1);
+cout<<segtree<<endl;
+cout<<query(0,n-1,1,0,2)<<endl; 
+update(a,0,n-1,1,1,3);
+cout<<segtree<<endl;
+cout<<query(0,n-1,1,2,5)<<endl;
+
 
 }
 int main(){
